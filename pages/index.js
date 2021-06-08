@@ -1,23 +1,24 @@
-import Head from 'next/head'
-import Header from '@components/Header'
-import Footer from '@components/Footer'
+import Ticker from "@components/Ticker"
+import TickerItem from "@components/TickerItem"
+import { useEffect, useState } from "react";
 
-export default function Home() {
-  return (
-    <div className="container">
-      <Head>
-        <title>Next.js Starter!</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+export default function Index() {
+    const [data, setData] = useState([]);
 
-      <main>
-        <Header title="Welcome to my app!" />
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
-      </main>
+    useEffect(() => {
+        import('../data/financialData')
+            .then(data => {
+                const shuffled = data.default.sort(() => 0.5 - Math.random());
+                console.log(shuffled.slice(0, 50));
+                setData(shuffled.slice(0, 50))
+            });
+    }, [])
 
-      <Footer />
-    </div>
-  )
+    return (
+        <div className="h-32">
+            <Ticker>
+                {data.map((data, idx) => <TickerItem key={idx} {...data} />)}
+            </Ticker>
+        </div>
+    )
 }
