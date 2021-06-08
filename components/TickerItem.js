@@ -2,6 +2,7 @@ export default function TickerItem({ ticker, price, percentChange }) {
     return (
         <div className="flex flex-row text-white px-5 py-1">
             <p className="mr-2">{ticker}</p>
+            <p>$</p>
             <p className="mr-2">{price}</p>
             <p className={`${percentChange < 0 ? 'text-red-600' : 'text-green-400'} mr-2`}>
                 {`${percentChange}%`}
