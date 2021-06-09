@@ -9,7 +9,6 @@ export default function Index() {
         import('../data/financialData')
             .then(data => {
                 const shuffled = data.default.sort(() => 0.5 - Math.random());
-                console.log(shuffled.slice(0, 50));
                 setData(shuffled.slice(0, 50))
             });
     }, [])
