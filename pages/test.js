@@ -5,7 +5,7 @@ export default function Index() {
 
     return (
         <pre>
-            {prices}
+            {JSON.stringify(prices)}
         </pre>
     )
 }
