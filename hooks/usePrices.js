@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-const corsProxyUrl = 'http://fathomless-scrubland-94941.herokuapp.com/'
+const corsProxyUrl = 'https://fathomless-scrubland-94941.herokuapp.com/'
 
 export const usePrices = () => {
     const [prices, setPrices] = useState([])
