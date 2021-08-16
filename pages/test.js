@@ -1,27 +1,11 @@
-import { useEffect, useState } from "react";
+import { usePrices } from 'hooks/usePrices';
 
 export default function Index() {
-
-    useEffect(() => {
-        const getData = async () => {
-            const url = 'https://feeds.companyresearch.nzx.com/data/prices.php?format=JSON';
-            const response = await fetch(url, {
-                method: 'GET',
-                mode: 'no-cors'
-            });
-
-            if (!response.ok) return
-
-            const tickerData = await response.json();
-            console.log(tickerData);
-        }
-
-        getData();
-    }, []);
+    const [prices, get] = usePrices();
 
     return (
-        <div className="h-32">
-            test page
-        </div>
+        <pre>
+            {prices}
+        </pre>
     )
 }
